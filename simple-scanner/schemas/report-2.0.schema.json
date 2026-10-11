@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local-source-scanner.invalid/schemas/report-2.0.schema.json",
+  "title": "Local Source Intelligence Scanner report 2.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "scanner", "analysis", "repository", "files", "languages", "test_languages", "projects", "technologies", "dependencies", "dotnet", "analyzers", "statistics", "excluded_items", "errors", "warnings"],
+  "properties": {
+    "schema_version": { "const": "2.0" },
+    "scanner": { "type": "object", "additionalProperties": false, "required": ["name", "version"], "properties": { "name": { "const": "Local Source Intelligence Scanner" }, "version": { "$ref": "#/$defs/version" } } },
+    "analysis": {
+      "type": "object", "additionalProperties": false,
+      "required": ["analysis_id", "started_at", "completed_at", "status", "complete", "cancelled", "duration_ms"],
+      "properties": {
+        "analysis_id": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "started_at": { "type": "string", "format": "date-time" },
+        "completed_at": { "type": "string", "format": "date-time" },
+        "status": { "enum": ["completed", "completed_with_warnings", "partial", "failed"] },
+        "complete": { "type": "boolean" },
+        "cancelled": { "type": "boolean" },
+        "duration_ms": { "$ref": "#/$defs/count" }
+      }
+    },
+    "repository": {
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "root_path", "total_files", "total_size_bytes", "total_discovered_size_bytes", "total_included_size_bytes", "file_counts"],
+      "properties": {
+        "name": { "type": "string", "maxLength": 255 }, "root_path": { "type": "string", "maxLength": 4096 },
+        "total_files": { "$ref": "#/$defs/count" }, "total_size_bytes": { "$ref": "#/$defs/count" },
+        "total_discovered_size_bytes": { "$ref": "#/$defs/count" }, "total_included_size_bytes": { "$ref": "#/$defs/count" },
+        "file_counts": { "$ref": "#/$defs/fileCounts" }
+      }
+    },
+    "files": { "type": "array", "items": { "$ref": "#/$defs/file" } },
+    "languages": { "type": "array", "items": { "$ref": "#/$defs/language" } },
+    "test_languages": { "type": "array", "items": { "$ref": "#/$defs/language" } },
+    "projects": { "type": "array", "items": { "$ref": "#/$defs/project" } },
+    "technologies": { "type": "array", "items": { "$ref": "#/$defs/technology" } },
+    "dependencies": { "type": "array", "items": { "$ref": "#/$defs/dependency" } },
+    "dotnet": { "$ref": "#/$defs/dotnet" },
+    "analyzers": { "$ref": "#/$defs/analyzers" },
+    "statistics": { "$ref": "#/$defs/statistics" },
+    "excluded_items": { "type": "array", "items": { "$ref": "#/$defs/excluded" } },
+    "errors": { "type": "array", "items": { "$ref": "#/$defs/diagnostic" } },
+    "warnings": { "type": "array", "items": { "$ref": "#/$defs/diagnostic" } }
+  },
+  "$defs": {
+    "count": { "type": "integer", "minimum": 0, "maximum": 9007199254740991 },
+    "version": { "type": "string", "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$" },
+    "fileCounts": {
+      "type": "object", "additionalProperties": false,
+      "required": ["files_discovered", "files_included", "files_analyzed", "files_excluded", "files_skipped", "files_failed", "directories_excluded", "directories_failed", "unvisited_files_unknown"],
+      "properties": {
+        "files_discovered": { "$ref": "#/$defs/count" }, "files_included": { "$ref": "#/$defs/count" },
+        "files_analyzed": { "$ref": "#/$defs/count" }, "files_excluded": { "$ref": "#/$defs/count" },
+        "files_skipped": { "$ref": "#/$defs/count" }, "files_failed": { "$ref": "#/$defs/count" },
+        "directories_excluded": { "$ref": "#/$defs/count" }, "directories_failed": { "$ref": "#/$defs/count" },
+        "unvisited_files_unknown": { "type": "boolean" }
+      }
+    },
+    "file": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "extension", "file_format", "size_bytes", "category", "language", "is_project_file", "is_build_file", "is_dependency_file", "is_test_file", "is_configuration_file", "is_documentation_file"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 }, "extension": { "type": "string", "maxLength": 32 },
+        "file_format": { "type": ["string", "null"], "maxLength": 80 }, "size_bytes": { "$ref": "#/$defs/count" },
+        "category": { "enum": ["source_code", "test_code", "configuration", "data", "dependency_manifest", "project_manifest", "build_configuration", "documentation", "generated", "static_asset", "other"] },
+        "language": { "type": ["string", "null"], "maxLength": 80 },
+        "is_project_file": { "type": "boolean" }, "is_build_file": { "type": "boolean" },
+        "is_dependency_file": { "type": "boolean" }, "is_test_file": { "type": "boolean" },
+        "is_configuration_file": { "type": "boolean" }, "is_documentation_file": { "type": "boolean" }
+      }
+    },
+    "language": {
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "file_count", "size_bytes", "lines", "blank_lines"],
+      "properties": { "name": { "type": "string", "minLength": 1, "maxLength": 80 }, "file_count": { "$ref": "#/$defs/count" }, "size_bytes": { "$ref": "#/$defs/count" }, "lines": { "$ref": "#/$defs/count" }, "blank_lines": { "$ref": "#/$defs/count" }, "line_count_status": { "const": "available" }, "comment_count_status": { "const": "unavailable" }, "comment_count_unavailable_files": { "$ref": "#/$defs/count" } }
+    },
+    "project": {
+      "type": "object", "additionalProperties": false,
+      "required": ["project_id", "project_type", "ecosystem", "manifest_path", "project_root", "manifest_paths", "parent_project_path", "relationships"],
+      "properties": {
+        "project_id": { "type": "string", "pattern": "^project-[a-f0-9]{24}$" }, "project_type": { "type": "string", "maxLength": 80 },
+        "ecosystem": { "type": "string", "maxLength": 80 }, "manifest_path": { "type": "string" }, "project_root": { "type": "string" },
+        "manifest_paths": { "type": "array", "items": { "type": "string" } }, "parent_project_path": { "type": ["string", "null"] },
+        "relationships": {
+          "type": "object", "additionalProperties": false, "required": ["solution_ids", "referenced_project_ids", "references"],
+          "properties": {
+            "solution_ids": { "type": "array", "items": { "type": "string" } },
+            "referenced_project_ids": { "type": "array", "items": { "type": "string" } },
+            "references": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["target_path", "target_project_id", "status"], "properties": { "target_path": { "type": ["string", "null"] }, "target_project_id": { "type": ["string", "null"] }, "status": { "enum": ["resolved", "unresolved"] } } } }
+          }
+        }
+      }
+    },
+    "technology": {
+      "type": "object", "additionalProperties": false,
+      "required": ["technology_id", "technology", "category", "ecosystem", "detection_method", "evidence_file_path", "evidence_type", "confidence", "analyzer_id", "analyzer_version", "explanation"],
+      "properties": {
+        "technology_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{0,127}$" }, "technology": { "type": "string", "maxLength": 80 },
+        "category": { "enum": ["library", "framework", "project_target_framework", "sdk_constraint", "runtime"] },
+        "ecosystem": { "type": "string", "maxLength": 80 },
+        "detection_method": { "enum": ["project_target_framework", "framework_reference", "manifest_dependency", "configuration", "file_pattern"] },
+        "evidence_file_path": { "type": "string" }, "evidence_type": { "type": "string", "maxLength": 80 },
+        "project_id": { "type": "string", "pattern": "^project-[a-f0-9]{24}$" }, "evidence_identity": { "type": "string", "maxLength": 240 },
+        "declared_version": { "type": "string", "maxLength": 128 }, "version_scope": { "enum": ["package", "sdk_constraint"] },
+        "declared_value": { "type": "string", "maxLength": 512 }, "condition": { "type": "string", "maxLength": 512 },
+        "confidence": { "enum": ["manifest_declared", "inferred"] }, "analyzer_id": { "type": "string", "maxLength": 64 },
+        "analyzer_version": { "$ref": "#/$defs/version" }, "explanation": { "type": "string", "maxLength": 300 }
+      }
+    },
+    "dependency": {
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "version", "declared_version", "resolved_version", "version_source", "version_status", "ecosystem", "manifest_path", "classification", "direct", "development", "optional", "version_unresolved", "parse_status"],
+      "properties": {
+        "name": { "type": ["string", "null"], "maxLength": 200 }, "version": { "type": ["string", "null"], "maxLength": 128 },
+        "declared_version": { "type": ["string", "null"], "maxLength": 128 }, "resolved_version": { "type": ["string", "null"], "maxLength": 128 },
+        "version_source": { "enum": ["manifest", "project", "central_package_management", "missing", "lockfile"] },
+        "version_status": { "enum": ["declared", "resolved", "unresolved", "missing"] },
+        "ecosystem": { "type": "string", "maxLength": 80 }, "manifest_path": { "type": "string" },
+        "project_id": { "type": "string", "pattern": "^project-[a-f0-9]{24}$" }, "condition": { "type": "string", "maxLength": 512 },
+        "classification": { "enum": ["direct", "development", "optional"] }, "direct": { "type": "boolean" },
+        "development": { "type": "boolean" }, "optional": { "type": "boolean" }, "version_unresolved": { "type": "boolean" },
+        "parse_status": { "enum": ["parsed", "unparsed"] }
+      }
+    },
+    "dotnet": {
+      "type": "object", "additionalProperties": false, "required": ["projects", "sdk_constraints", "solution_memberships", "runtime"],
+      "properties": {
+        "projects": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["project_id", "manifest_path", "target_frameworks", "framework_references", "project_references", "runtime"], "properties": {
+          "project_id": { "type": "string", "pattern": "^project-[a-f0-9]{24}$" }, "manifest_path": { "type": "string" },
+          "target_frameworks": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["property_name", "declared_value", "condition", "evidence_file_path", "detection_method", "status"], "properties": {
+            "property_name": { "enum": ["TargetFramework", "TargetFrameworks"] }, "declared_value": { "type": "string", "maxLength": 512 },
+            "condition": { "type": ["string", "null"], "maxLength": 512 }, "evidence_file_path": { "type": "string" },
+            "detection_method": { "const": "project_target_framework" }, "status": { "enum": ["declared", "unresolved"] }
+          } } },
+          "framework_references": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["name", "condition", "evidence_file_path", "detection_method"], "properties": { "name": { "type": "string", "maxLength": 200 }, "condition": { "type": ["string", "null"], "maxLength": 512 }, "evidence_file_path": { "type": "string" }, "detection_method": { "const": "framework_reference" } } } },
+          "project_references": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["target_path", "target_project_id", "condition", "evidence_file_path", "status"], "properties": { "target_path": { "type": ["string", "null"] }, "target_project_id": { "type": ["string", "null"] }, "condition": { "type": ["string", "null"], "maxLength": 512 }, "evidence_file_path": { "type": "string" }, "status": { "enum": ["resolved", "unresolved"] } } } },
+          "runtime": { "$ref": "#/$defs/runtime" }
+        } } },
+        "sdk_constraints": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["declared_version", "roll_forward", "allow_prerelease", "evidence_file_path", "property_name", "detection_method", "status"], "properties": {
+          "declared_version": { "type": "string", "maxLength": 128 }, "roll_forward": { "type": ["string", "null"], "maxLength": 80 }, "allow_prerelease": { "type": ["boolean", "null"] },
+          "evidence_file_path": { "type": "string" }, "property_name": { "const": "sdk.version" }, "detection_method": { "const": "global_json" }, "status": { "enum": ["declared", "unresolved"] }
+        } } },
+        "solution_memberships": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["solution_path", "project_path", "project_id", "solution_guid", "status"], "properties": { "solution_path": { "type": "string" }, "project_path": { "type": "string" }, "project_id": { "type": ["string", "null"] }, "solution_guid": { "type": ["string", "null"] }, "status": { "enum": ["resolved", "unresolved"] } } } },
+        "runtime": { "$ref": "#/$defs/runtime" }
+      }
+    },
+    "runtime": { "type": "object", "additionalProperties": false, "required": ["status", "versions"], "properties": { "status": { "enum": ["not_detected", "detected"] }, "versions": { "type": "array", "items": { "type": "string", "maxLength": 128 } } } },
+    "analyzers": {
+      "type": "object", "additionalProperties": false, "required": ["executions", "counts"],
+      "properties": {
+        "executions": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["analyzer_id", "version", "status", "selected", "depends_on"], "properties": {
+          "analyzer_id": { "type": "string", "minLength": 1, "maxLength": 64 }, "version": { "anyOf": [{ "$ref": "#/$defs/version" }, { "type": "null" }] },
+          "status": { "enum": ["completed", "failed", "skipped", "unsupported", "cancelled"] }, "selected": { "type": "boolean" }, "depends_on": { "type": "array", "items": { "type": "string", "maxLength": 64 } }
+        } } },
+        "counts": { "type": "object", "additionalProperties": false, "required": ["completed", "failed", "skipped", "unsupported", "cancelled"], "properties": { "completed": { "$ref": "#/$defs/count" }, "failed": { "$ref": "#/$defs/count" }, "skipped": { "$ref": "#/$defs/count" }, "unsupported": { "$ref": "#/$defs/count" }, "cancelled": { "$ref": "#/$defs/count" } } }
+      }
+    },
+    "statistics": {
+      "type": "object", "additionalProperties": false, "required": ["files_by_category", "source_files_analyzed", "source_code_size_bytes", "source_code_lines", "source_code_blank_lines", "test_files", "test_files_analyzed", "test_files_excluded_by_option", "test_code_size_bytes", "test_code_lines", "test_code_blank_lines", "configuration_files", "manifest_files", "documentation_files", "generated_files_excluded", "comment_metrics", "files_processed"],
+      "properties": {
+        "files_by_category": { "type": "object", "additionalProperties": { "$ref": "#/$defs/count" } },
+        "source_files_analyzed": { "$ref": "#/$defs/count" }, "source_code_size_bytes": { "$ref": "#/$defs/count" }, "source_code_lines": { "$ref": "#/$defs/count" }, "source_code_blank_lines": { "$ref": "#/$defs/count" },
+        "test_files": { "$ref": "#/$defs/count" }, "test_files_analyzed": { "$ref": "#/$defs/count" }, "test_files_excluded_by_option": { "$ref": "#/$defs/count" },
+        "test_code_size_bytes": { "$ref": "#/$defs/count" }, "test_code_lines": { "$ref": "#/$defs/count" }, "test_code_blank_lines": { "$ref": "#/$defs/count" },
+        "configuration_files": { "$ref": "#/$defs/count" }, "manifest_files": { "$ref": "#/$defs/count" }, "documentation_files": { "$ref": "#/$defs/count" }, "generated_files_excluded": { "$ref": "#/$defs/count" },
+        "comment_metrics": { "type": "object", "additionalProperties": false, "required": ["available", "status", "reason", "unavailable_files"], "properties": { "available": { "const": false }, "status": { "const": "unavailable" }, "reason": { "type": "string", "maxLength": 200 }, "unavailable_files": { "$ref": "#/$defs/count" } } },
+        "files_processed": { "$ref": "#/$defs/count" }
+      }
+    },
+    "excluded": { "type": "object", "additionalProperties": false, "required": ["path", "reason"], "properties": { "path": { "type": "string" }, "reason": { "type": "string", "maxLength": 80 }, "item_type": { "type": "string", "maxLength": 32 }, "category": { "type": "string", "maxLength": 80 }, "size_bytes": { "$ref": "#/$defs/count" } } },
+    "diagnostic": { "type": "object", "additionalProperties": false, "required": ["code", "message"], "properties": { "code": { "type": "string", "minLength": 1, "maxLength": 80 }, "file_path": { "type": "string" }, "analyzer_id": { "type": "string", "maxLength": 64 }, "message": { "type": "string", "minLength": 1, "maxLength": 200 } } }
+  }
+}

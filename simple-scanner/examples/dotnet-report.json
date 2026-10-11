@@ -1,0 +1,647 @@
+{
+  "schema_version": "2.0",
+  "scanner": {
+    "name": "Local Source Intelligence Scanner",
+    "version": "0.1.0"
+  },
+  "analysis": {
+    "analysis_id": "92a81989-432a-4b5a-8ec6-e043a5b85993",
+    "started_at": "2026-10-10T16:59:41.199Z",
+    "completed_at": "2026-10-10T16:59:41.261Z",
+    "status": "completed",
+    "complete": true,
+    "cancelled": false,
+    "duration_ms": 61
+  },
+  "repository": {
+    "name": "dotnet-sample",
+    "root_path": ".",
+    "total_files": 9,
+    "total_size_bytes": 2991,
+    "total_discovered_size_bytes": 2991,
+    "total_included_size_bytes": 2991,
+    "file_counts": {
+      "files_discovered": 9,
+      "files_included": 9,
+      "files_analyzed": 8,
+      "files_excluded": 0,
+      "files_skipped": 1,
+      "files_failed": 0,
+      "directories_excluded": 0,
+      "directories_failed": 0,
+      "unvisited_files_unknown": false
+    }
+  },
+  "files": [
+    {
+      "path": "Directory.Build.props",
+      "extension": ".props",
+      "file_format": "XML",
+      "size_bytes": 132,
+      "category": "build_configuration",
+      "language": null,
+      "is_project_file": false,
+      "is_build_file": true,
+      "is_dependency_file": false,
+      "is_test_file": false,
+      "is_configuration_file": true,
+      "is_documentation_file": false
+    },
+    {
+      "path": "Directory.Packages.props",
+      "extension": ".props",
+      "file_format": "XML",
+      "size_bytes": 651,
+      "category": "dependency_manifest",
+      "language": null,
+      "is_project_file": false,
+      "is_build_file": true,
+      "is_dependency_file": true,
+      "is_test_file": false,
+      "is_configuration_file": true,
+      "is_documentation_file": false
+    },
+    {
+      "path": "global.json",
+      "extension": ".json",
+      "file_format": "JSON",
+      "size_bytes": 110,
+      "category": "build_configuration",
+      "language": null,
+      "is_project_file": false,
+      "is_build_file": true,
+      "is_dependency_file": false,
+      "is_test_file": false,
+      "is_configuration_file": true,
+      "is_documentation_file": false
+    },
+    {
+      "path": "SimpleScannerSample.sln",
+      "extension": ".sln",
+      "file_format": null,
+      "size_bytes": 380,
+      "category": "project_manifest",
+      "language": null,
+      "is_project_file": true,
+      "is_build_file": true,
+      "is_dependency_file": false,
+      "is_test_file": false,
+      "is_configuration_file": false,
+      "is_documentation_file": false
+    },
+    {
+      "path": "src/Web/packages.lock.json",
+      "extension": ".json",
+      "file_format": "JSON",
+      "size_bytes": 347,
+      "category": "dependency_manifest",
+      "language": null,
+      "is_project_file": false,
+      "is_build_file": true,
+      "is_dependency_file": true,
+      "is_test_file": false,
+      "is_configuration_file": false,
+      "is_documentation_file": false
+    },
+    {
+      "path": "src/Web/Program.cs",
+      "extension": ".cs",
+      "file_format": null,
+      "size_bytes": 119,
+      "category": "source_code",
+      "language": "C#",
+      "is_project_file": false,
+      "is_build_file": false,
+      "is_dependency_file": false,
+      "is_test_file": false,
+      "is_configuration_file": false,
+      "is_documentation_file": false
+    },
+    {
+      "path": "src/Web/Web.csproj",
+      "extension": ".csproj",
+      "file_format": "XML",
+      "size_bytes": 771,
+      "category": "project_manifest",
+      "language": null,
+      "is_project_file": true,
+      "is_build_file": true,
+      "is_dependency_file": true,
+      "is_test_file": false,
+      "is_configuration_file": false,
+      "is_documentation_file": false
+    },
+    {
+      "path": "tests/Web.Tests.csproj",
+      "extension": ".csproj",
+      "file_format": "XML",
+      "size_bytes": 376,
+      "category": "project_manifest",
+      "language": null,
+      "is_project_file": true,
+      "is_build_file": true,
+      "is_dependency_file": true,
+      "is_test_file": true,
+      "is_configuration_file": false,
+      "is_documentation_file": false
+    },
+    {
+      "path": "tests/WebTests.cs",
+      "extension": ".cs",
+      "file_format": null,
+      "size_bytes": 105,
+      "category": "test_code",
+      "language": "C#",
+      "is_project_file": false,
+      "is_build_file": false,
+      "is_dependency_file": false,
+      "is_test_file": true,
+      "is_configuration_file": false,
+      "is_documentation_file": false
+    }
+  ],
+  "languages": [
+    {
+      "name": "C#",
+      "file_count": 1,
+      "size_bytes": 119,
+      "lines": 6,
+      "blank_lines": 1,
+      "line_count_status": "available",
+      "comment_count_status": "unavailable",
+      "comment_count_unavailable_files": 1
+    }
+  ],
+  "test_languages": [],
+  "projects": [
+    {
+      "project_id": "project-682fd46944e909594c99772d",
+      "project_type": ".NET solution",
+      "ecosystem": ".NET",
+      "manifest_path": "SimpleScannerSample.sln",
+      "project_root": ".",
+      "manifest_paths": [
+        "SimpleScannerSample.sln"
+      ],
+      "parent_project_path": null,
+      "relationships": {
+        "solution_ids": [],
+        "referenced_project_ids": [],
+        "references": []
+      }
+    },
+    {
+      "project_id": "project-2ddf42418f15e456d7095956",
+      "project_type": "C# project",
+      "ecosystem": ".NET",
+      "manifest_path": "src/Web/Web.csproj",
+      "project_root": "src/Web",
+      "manifest_paths": [
+        "src/Web/packages.lock.json",
+        "src/Web/Web.csproj"
+      ],
+      "parent_project_path": "SimpleScannerSample.sln",
+      "relationships": {
+        "solution_ids": [
+          "project-682fd46944e909594c99772d"
+        ],
+        "referenced_project_ids": [],
+        "references": []
+      }
+    },
+    {
+      "project_id": "project-574af0530239a45f577dd5d1",
+      "project_type": "C# project",
+      "ecosystem": ".NET",
+      "manifest_path": "tests/Web.Tests.csproj",
+      "project_root": "tests",
+      "manifest_paths": [
+        "tests/Web.Tests.csproj"
+      ],
+      "parent_project_path": "SimpleScannerSample.sln",
+      "relationships": {
+        "solution_ids": [
+          "project-682fd46944e909594c99772d"
+        ],
+        "referenced_project_ids": [
+          "project-2ddf42418f15e456d7095956"
+        ],
+        "references": [
+          {
+            "target_path": "src/Web/Web.csproj",
+            "target_project_id": "project-2ddf42418f15e456d7095956",
+            "status": "resolved"
+          }
+        ]
+      }
+    }
+  ],
+  "technologies": [
+    {
+      "technology_id": "aspnet-core",
+      "technology": "ASP.NET Core",
+      "category": "framework",
+      "ecosystem": ".NET",
+      "detection_method": "manifest_dependency",
+      "evidence_file_path": "src/Web/Web.csproj",
+      "evidence_type": "package_reference",
+      "project_id": "project-2ddf42418f15e456d7095956",
+      "evidence_identity": "package:Microsoft.AspNetCore.Authentication.JwtBearer",
+      "declared_version": "8.0.11",
+      "version_scope": "package",
+      "confidence": "manifest_declared",
+      "analyzer_id": "technologies",
+      "analyzer_version": "1.0.0",
+      "explanation": "A manifest declares this package; the package version is not a framework or runtime version."
+    },
+    {
+      "technology_id": "aspnet-core",
+      "technology": "ASP.NET Core",
+      "category": "framework",
+      "ecosystem": ".NET",
+      "detection_method": "framework_reference",
+      "evidence_file_path": "src/Web/Web.csproj",
+      "evidence_type": "framework_reference",
+      "project_id": "project-2ddf42418f15e456d7095956",
+      "evidence_identity": "package:Microsoft.AspNetCore.App",
+      "confidence": "manifest_declared",
+      "analyzer_id": "technologies",
+      "analyzer_version": "1.0.0",
+      "explanation": "The project declares this framework reference; it does not establish runtime installation or execution."
+    },
+    {
+      "technology_id": "dotnet-sdk",
+      "technology": ".NET SDK",
+      "category": "sdk_constraint",
+      "ecosystem": ".NET",
+      "detection_method": "configuration",
+      "evidence_file_path": "global.json",
+      "evidence_type": "sdk_configuration",
+      "declared_version": "8.0.200",
+      "version_scope": "sdk_constraint",
+      "confidence": "manifest_declared",
+      "analyzer_id": "technologies",
+      "analyzer_version": "1.0.0",
+      "explanation": "A local SDK configuration declares this version constraint; it does not establish an installed SDK."
+    },
+    {
+      "technology_id": "dotnet-target-net6-0-net8-0",
+      "technology": ".NET target framework net6.0;net8.0",
+      "category": "project_target_framework",
+      "ecosystem": ".NET",
+      "detection_method": "project_target_framework",
+      "evidence_file_path": "tests/Web.Tests.csproj",
+      "evidence_type": "project_property",
+      "project_id": "project-574af0530239a45f577dd5d1",
+      "declared_value": "net6.0;net8.0",
+      "confidence": "manifest_declared",
+      "analyzer_id": "technologies",
+      "analyzer_version": "1.0.0",
+      "explanation": "The project declares this target framework; it does not establish an installed or executing runtime."
+    },
+    {
+      "technology_id": "dotnet-target-net8-0",
+      "technology": ".NET target framework net8.0",
+      "category": "project_target_framework",
+      "ecosystem": ".NET",
+      "detection_method": "project_target_framework",
+      "evidence_file_path": "src/Web/Web.csproj",
+      "evidence_type": "project_property",
+      "project_id": "project-2ddf42418f15e456d7095956",
+      "declared_value": "net8.0",
+      "condition": "'$(Configuration)' == 'Debug'",
+      "confidence": "manifest_declared",
+      "analyzer_id": "technologies",
+      "analyzer_version": "1.0.0",
+      "explanation": "The project declares this target framework; it does not establish an installed or executing runtime."
+    },
+    {
+      "technology_id": "dotnet-target-net8-0-net9-0",
+      "technology": ".NET target framework net8.0;net9.0",
+      "category": "project_target_framework",
+      "ecosystem": ".NET",
+      "detection_method": "project_target_framework",
+      "evidence_file_path": "src/Web/Web.csproj",
+      "evidence_type": "project_property",
+      "project_id": "project-2ddf42418f15e456d7095956",
+      "declared_value": "net8.0;net9.0",
+      "condition": "'$(Configuration)' == 'Release'",
+      "confidence": "manifest_declared",
+      "analyzer_id": "technologies",
+      "analyzer_version": "1.0.0",
+      "explanation": "The project declares this target framework; it does not establish an installed or executing runtime."
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "ConditionalPolicy",
+      "version": "$(ConditionalPackageVersion)",
+      "declared_version": "$(ConditionalPackageVersion)",
+      "resolved_version": null,
+      "version_source": "project",
+      "version_status": "unresolved",
+      "ecosystem": ".NET",
+      "manifest_path": "src/Web/Web.csproj",
+      "project_id": "project-2ddf42418f15e456d7095956",
+      "condition": "'$(Configuration)' == 'Debug'",
+      "classification": "direct",
+      "direct": true,
+      "development": false,
+      "optional": false,
+      "version_unresolved": true,
+      "parse_status": "parsed"
+    },
+    {
+      "name": "Microsoft.AspNetCore.Authentication.JwtBearer",
+      "version": "8.0.11",
+      "declared_version": "8.0.11",
+      "resolved_version": "8.0.11",
+      "version_source": "central_package_management",
+      "version_status": "resolved",
+      "ecosystem": ".NET",
+      "manifest_path": "src/Web/Web.csproj",
+      "project_id": "project-2ddf42418f15e456d7095956",
+      "classification": "direct",
+      "direct": true,
+      "development": false,
+      "optional": false,
+      "version_unresolved": false,
+      "parse_status": "parsed"
+    },
+    {
+      "name": "Microsoft.Extensions.Http",
+      "version": "8.0.1",
+      "declared_version": "8.0.1",
+      "resolved_version": null,
+      "version_source": "central_package_management",
+      "version_status": "declared",
+      "ecosystem": ".NET",
+      "manifest_path": "src/Web/Web.csproj",
+      "project_id": "project-2ddf42418f15e456d7095956",
+      "classification": "direct",
+      "direct": true,
+      "development": false,
+      "optional": false,
+      "version_unresolved": false,
+      "parse_status": "parsed"
+    },
+    {
+      "name": "Newtonsoft.Json",
+      "version": "13.0.3",
+      "declared_version": "13.0.3",
+      "resolved_version": "13.0.3",
+      "version_source": "central_package_management",
+      "version_status": "resolved",
+      "ecosystem": ".NET",
+      "manifest_path": "src/Web/Web.csproj",
+      "project_id": "project-2ddf42418f15e456d7095956",
+      "classification": "direct",
+      "direct": true,
+      "development": false,
+      "optional": false,
+      "version_unresolved": false,
+      "parse_status": "parsed"
+    },
+    {
+      "name": "Serilog",
+      "version": "3.1.1",
+      "declared_version": "3.1.1",
+      "resolved_version": null,
+      "version_source": "central_package_management",
+      "version_status": "declared",
+      "ecosystem": ".NET",
+      "manifest_path": "src/Web/Web.csproj",
+      "project_id": "project-2ddf42418f15e456d7095956",
+      "classification": "direct",
+      "direct": true,
+      "development": false,
+      "optional": false,
+      "version_unresolved": false,
+      "parse_status": "parsed"
+    },
+    {
+      "name": "coverlet.collector",
+      "version": "6.0.2",
+      "declared_version": "6.0.2",
+      "resolved_version": null,
+      "version_source": "central_package_management",
+      "version_status": "declared",
+      "ecosystem": ".NET",
+      "manifest_path": "tests/Web.Tests.csproj",
+      "project_id": "project-574af0530239a45f577dd5d1",
+      "classification": "direct",
+      "direct": true,
+      "development": false,
+      "optional": false,
+      "version_unresolved": false,
+      "parse_status": "parsed"
+    },
+    {
+      "name": "Microsoft.NET.Test.Sdk",
+      "version": "17.9.0",
+      "declared_version": "17.9.0",
+      "resolved_version": null,
+      "version_source": "central_package_management",
+      "version_status": "declared",
+      "ecosystem": ".NET",
+      "manifest_path": "tests/Web.Tests.csproj",
+      "project_id": "project-574af0530239a45f577dd5d1",
+      "classification": "direct",
+      "direct": true,
+      "development": false,
+      "optional": false,
+      "version_unresolved": false,
+      "parse_status": "parsed"
+    },
+    {
+      "name": "xunit",
+      "version": "2.6.6",
+      "declared_version": "2.6.6",
+      "resolved_version": null,
+      "version_source": "central_package_management",
+      "version_status": "declared",
+      "ecosystem": ".NET",
+      "manifest_path": "tests/Web.Tests.csproj",
+      "project_id": "project-574af0530239a45f577dd5d1",
+      "classification": "direct",
+      "direct": true,
+      "development": false,
+      "optional": false,
+      "version_unresolved": false,
+      "parse_status": "parsed"
+    }
+  ],
+  "dotnet": {
+    "projects": [
+      {
+        "project_id": "project-2ddf42418f15e456d7095956",
+        "manifest_path": "src/Web/Web.csproj",
+        "target_frameworks": [
+          {
+            "property_name": "TargetFramework",
+            "declared_value": "net8.0",
+            "condition": "'$(Configuration)' == 'Debug'",
+            "evidence_file_path": "src/Web/Web.csproj",
+            "detection_method": "project_target_framework",
+            "status": "unresolved"
+          },
+          {
+            "property_name": "TargetFrameworks",
+            "declared_value": "net8.0;net9.0",
+            "condition": "'$(Configuration)' == 'Release'",
+            "evidence_file_path": "src/Web/Web.csproj",
+            "detection_method": "project_target_framework",
+            "status": "unresolved"
+          }
+        ],
+        "framework_references": [
+          {
+            "name": "Microsoft.AspNetCore.App",
+            "condition": null,
+            "evidence_file_path": "src/Web/Web.csproj",
+            "detection_method": "framework_reference"
+          }
+        ],
+        "project_references": [],
+        "runtime": {
+          "status": "not_detected",
+          "versions": []
+        }
+      },
+      {
+        "project_id": "project-574af0530239a45f577dd5d1",
+        "manifest_path": "tests/Web.Tests.csproj",
+        "target_frameworks": [
+          {
+            "property_name": "TargetFrameworks",
+            "declared_value": "net6.0;net8.0",
+            "condition": null,
+            "evidence_file_path": "tests/Web.Tests.csproj",
+            "detection_method": "project_target_framework",
+            "status": "declared"
+          }
+        ],
+        "framework_references": [],
+        "project_references": [
+          {
+            "target_path": "src/Web/Web.csproj",
+            "target_project_id": "project-2ddf42418f15e456d7095956",
+            "condition": null,
+            "evidence_file_path": "tests/Web.Tests.csproj",
+            "status": "resolved"
+          }
+        ],
+        "runtime": {
+          "status": "not_detected",
+          "versions": []
+        }
+      }
+    ],
+    "sdk_constraints": [
+      {
+        "declared_version": "8.0.200",
+        "roll_forward": "latestFeature",
+        "allow_prerelease": false,
+        "evidence_file_path": "global.json",
+        "property_name": "sdk.version",
+        "detection_method": "global_json",
+        "status": "declared"
+      }
+    ],
+    "solution_memberships": [
+      {
+        "solution_path": "SimpleScannerSample.sln",
+        "project_path": "src/Web/Web.csproj",
+        "project_id": "project-2ddf42418f15e456d7095956",
+        "solution_guid": "11111111-1111-1111-1111-111111111111",
+        "status": "resolved"
+      },
+      {
+        "solution_path": "SimpleScannerSample.sln",
+        "project_path": "tests/Web.Tests.csproj",
+        "project_id": "project-574af0530239a45f577dd5d1",
+        "solution_guid": "22222222-2222-2222-2222-222222222222",
+        "status": "resolved"
+      }
+    ],
+    "runtime": {
+      "status": "not_detected",
+      "versions": []
+    }
+  },
+  "analyzers": {
+    "executions": [
+      {
+        "analyzer_id": "language",
+        "version": "1.0.0",
+        "status": "completed",
+        "selected": true,
+        "depends_on": []
+      },
+      {
+        "analyzer_id": "dependencies",
+        "version": "1.0.0",
+        "status": "completed",
+        "selected": true,
+        "depends_on": []
+      },
+      {
+        "analyzer_id": "dotnet",
+        "version": "1.0.0",
+        "status": "completed",
+        "selected": true,
+        "depends_on": []
+      },
+      {
+        "analyzer_id": "technologies",
+        "version": "1.0.0",
+        "status": "completed",
+        "selected": true,
+        "depends_on": [
+          "dependencies",
+          "dotnet"
+        ]
+      }
+    ],
+    "counts": {
+      "completed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "unsupported": 0,
+      "cancelled": 0
+    }
+  },
+  "statistics": {
+    "files_by_category": {
+      "build_configuration": 2,
+      "dependency_manifest": 2,
+      "project_manifest": 3,
+      "source_code": 1,
+      "test_code": 1
+    },
+    "source_files_analyzed": 1,
+    "source_code_size_bytes": 119,
+    "source_code_lines": 6,
+    "source_code_blank_lines": 1,
+    "test_files": 1,
+    "test_files_analyzed": 0,
+    "test_files_excluded_by_option": 1,
+    "test_code_size_bytes": 0,
+    "test_code_lines": 0,
+    "test_code_blank_lines": 0,
+    "configuration_files": 0,
+    "manifest_files": 7,
+    "documentation_files": 0,
+    "generated_files_excluded": 0,
+    "comment_metrics": {
+      "available": false,
+      "status": "unavailable",
+      "reason": "No language-aware comment parser is implemented in V1.",
+      "unavailable_files": 1
+    },
+    "files_processed": 8
+  },
+  "excluded_items": [],
+  "errors": [],
+  "warnings": []
+}

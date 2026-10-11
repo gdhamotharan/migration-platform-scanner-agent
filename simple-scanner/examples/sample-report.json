@@ -1,0 +1,213 @@
+{
+  "schema_version": "2.0",
+  "scanner": {
+    "name": "Local Source Intelligence Scanner",
+    "version": "0.1.0"
+  },
+  "analysis": {
+    "analysis_id": "d38feac1-a4b1-4668-8e4f-fe6f2d06c9e8",
+    "started_at": "2026-10-10T16:59:38.546Z",
+    "completed_at": "2026-10-10T16:59:38.583Z",
+    "status": "completed",
+    "complete": true,
+    "cancelled": false,
+    "duration_ms": 36
+  },
+  "repository": {
+    "name": "sample-app",
+    "root_path": ".",
+    "total_files": 2,
+    "total_size_bytes": 202,
+    "total_discovered_size_bytes": 202,
+    "total_included_size_bytes": 202,
+    "file_counts": {
+      "files_discovered": 2,
+      "files_included": 2,
+      "files_analyzed": 2,
+      "files_excluded": 0,
+      "files_skipped": 0,
+      "files_failed": 0,
+      "directories_excluded": 0,
+      "directories_failed": 0,
+      "unvisited_files_unknown": false
+    }
+  },
+  "files": [
+    {
+      "path": "package.json",
+      "extension": ".json",
+      "file_format": "JSON",
+      "size_bytes": 104,
+      "category": "dependency_manifest",
+      "language": null,
+      "is_project_file": true,
+      "is_build_file": false,
+      "is_dependency_file": true,
+      "is_test_file": false,
+      "is_configuration_file": false,
+      "is_documentation_file": false
+    },
+    {
+      "path": "src/index.jsx",
+      "extension": ".jsx",
+      "file_format": null,
+      "size_bytes": 98,
+      "category": "source_code",
+      "language": "JavaScript",
+      "is_project_file": false,
+      "is_build_file": false,
+      "is_dependency_file": false,
+      "is_test_file": false,
+      "is_configuration_file": false,
+      "is_documentation_file": false
+    }
+  ],
+  "languages": [
+    {
+      "name": "JavaScript",
+      "file_count": 1,
+      "size_bytes": 98,
+      "lines": 5,
+      "blank_lines": 1,
+      "line_count_status": "available",
+      "comment_count_status": "unavailable",
+      "comment_count_unavailable_files": 1
+    }
+  ],
+  "test_languages": [],
+  "projects": [
+    {
+      "project_id": "project-7f68aba47ab548687a1c9eda",
+      "project_type": "Node.js project",
+      "ecosystem": "Node.js",
+      "manifest_path": "package.json",
+      "project_root": ".",
+      "manifest_paths": [
+        "package.json"
+      ],
+      "parent_project_path": null,
+      "relationships": {
+        "solution_ids": [],
+        "referenced_project_ids": [],
+        "references": []
+      }
+    }
+  ],
+  "technologies": [
+    {
+      "technology_id": "react",
+      "technology": "React",
+      "category": "library",
+      "ecosystem": "Node.js",
+      "detection_method": "manifest_dependency",
+      "evidence_file_path": "package.json",
+      "evidence_type": "manifest_dependency",
+      "evidence_identity": "package:react",
+      "declared_version": "^18.2.0",
+      "version_scope": "package",
+      "confidence": "manifest_declared",
+      "analyzer_id": "technologies",
+      "analyzer_version": "1.0.0",
+      "explanation": "A manifest declares this package; the package version is not a framework or runtime version."
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "react",
+      "version": "^18.2.0",
+      "declared_version": "^18.2.0",
+      "resolved_version": null,
+      "version_source": "manifest",
+      "version_status": "declared",
+      "ecosystem": "Node.js",
+      "manifest_path": "package.json",
+      "classification": "direct",
+      "direct": true,
+      "development": false,
+      "optional": false,
+      "version_unresolved": false,
+      "parse_status": "parsed"
+    }
+  ],
+  "dotnet": {
+    "projects": [],
+    "sdk_constraints": [],
+    "solution_memberships": [],
+    "runtime": {
+      "status": "not_detected",
+      "versions": []
+    }
+  },
+  "analyzers": {
+    "executions": [
+      {
+        "analyzer_id": "language",
+        "version": "1.0.0",
+        "status": "completed",
+        "selected": true,
+        "depends_on": []
+      },
+      {
+        "analyzer_id": "dependencies",
+        "version": "1.0.0",
+        "status": "completed",
+        "selected": true,
+        "depends_on": []
+      },
+      {
+        "analyzer_id": "dotnet",
+        "version": "1.0.0",
+        "status": "completed",
+        "selected": true,
+        "depends_on": []
+      },
+      {
+        "analyzer_id": "technologies",
+        "version": "1.0.0",
+        "status": "completed",
+        "selected": true,
+        "depends_on": [
+          "dependencies",
+          "dotnet"
+        ]
+      }
+    ],
+    "counts": {
+      "completed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "unsupported": 0,
+      "cancelled": 0
+    }
+  },
+  "statistics": {
+    "files_by_category": {
+      "dependency_manifest": 1,
+      "source_code": 1
+    },
+    "source_files_analyzed": 1,
+    "source_code_size_bytes": 98,
+    "source_code_lines": 5,
+    "source_code_blank_lines": 1,
+    "test_files": 0,
+    "test_files_analyzed": 0,
+    "test_files_excluded_by_option": 0,
+    "test_code_size_bytes": 0,
+    "test_code_lines": 0,
+    "test_code_blank_lines": 0,
+    "configuration_files": 0,
+    "manifest_files": 1,
+    "documentation_files": 0,
+    "generated_files_excluded": 0,
+    "comment_metrics": {
+      "available": false,
+      "status": "unavailable",
+      "reason": "No language-aware comment parser is implemented in V1.",
+      "unavailable_files": 1
+    },
+    "files_processed": 2
+  },
+  "excluded_items": [],
+  "errors": [],
+  "warnings": []
+}

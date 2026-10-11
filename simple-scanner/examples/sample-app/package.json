@@ -1,0 +1,7 @@
+{
+  "name": "sample-migration-app",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0"
+  }
+}
